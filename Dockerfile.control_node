@@ -1,0 +1,23 @@
+FROM python:3.9-slim
+
+RUN mkdir -p /.ssh
+COPY ./.keys/ansible_workshop .ssh
+RUN chmod 700 /.ssh
+RUN chmod 600 /.ssh/ansible_workshop
+
+RUN pip install pip --upgrade
+RUN pip install ansible==4.6.0
+
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends \
+    openssh-client \
+    sshpass \
+    ruby \
+    ruby-dev \
+    gcc \
+    g++ \
+    make
+
+RUN gem install inspec-bin ed25519 bcrypt_pbkdf
+
+WORKDIR /work

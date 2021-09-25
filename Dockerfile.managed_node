@@ -1,0 +1,31 @@
+FROM amazonlinux:2
+
+COPY ./.keys/ansible_workshop.pub /tmp/
+
+RUN yum -y update && \
+    yum -y install \
+        sudo \
+        shadow-utils \
+        procps \
+        wget \
+        openssh-server \
+        openssh-clients \
+        which \
+        iproute \
+        e2fsprogs && \
+    yum clean all && \
+    wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python && \
+    echo "PasswordAuthentication no" >> /etc/ssh/sshd_config && \
+    useradd ec2-user && \
+    echo "ec2-user ALL=NOPASSWD: ALL" >> /etc/sudoers && \
+    sudo -u ec2-user mkdir -p /home/ec2-user/.ssh && \
+    mv /tmp/ansible_workshop.pub /home/ec2-user/.ssh/ && \
+    chmod -R go-rwx /home/ec2-user/.ssh && \
+    cat /home/ec2-user/.ssh/ansible_workshop.pub >> /home/ec2-user/.ssh/authorized_keys && \
+    echo "export LANG=en_US.UTF-8" >> /home/ec2-user/.bash_profile
+
+RUN ssh-keygen -A
+
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]
