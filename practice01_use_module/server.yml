@@ -1,0 +1,6 @@
+---
+- hosts: web
+  become: yes
+  tasks:
+  - name: Create test_user
+    # TODO: userモジュールを使ってtest_userユーザーを作成する

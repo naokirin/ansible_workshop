@@ -1,0 +1,23 @@
+{
+    "version": "1.2",
+    "cli_options":{
+      "color": "true",
+      "chef-license": "accept",
+      "target": "ssh://managed_node"
+    },
+    "credentials": {
+      "ssh": {
+        "managed_node": {
+          "host":"managed_node",
+          "user":"ec2-user",
+          "key_files":["/.ssh/ansible_workshop"]
+        }
+      }
+    },
+    "reporter": {
+      "cli" : {
+        "stdout" : true
+      }
+    }
+  }
+  
