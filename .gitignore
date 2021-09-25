@@ -1,0 +1,10 @@
+/tmp
+.DS_Store
+._*
+*.zip
+*.gz
+.vagrant
+*.log
+
+/.keys/*
+!/.keys/.keep
