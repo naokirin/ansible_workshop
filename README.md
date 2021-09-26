@@ -24,7 +24,6 @@
 * Practice04: インベントリを編集してみる
 * Practice05: 変数を利用してみる
 * Practice06: 条件を利用してみる
-* Practice07: Valutを利用してみる
 
 ### 準備
 
