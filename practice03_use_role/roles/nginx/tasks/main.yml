@@ -1,0 +1,35 @@
+---
+# nginxを実行するユーザーを作成する
+- name: Create nginx user
+  ansible.builtin.user:
+    name: nginx
+  become: yes
+
+# nginxのパッケージが有効になっているかチェックする
+- name: Check nginx1 package
+  ansible.builtin.shell: "amazon-linux-extras list | grep nginx | grep enabled"
+  register: nginx1_enabled_result
+  changed_when: no
+  ignore_errors: yes
+
+# Amazon Linux 2 で nginx をyumインストールできるようにする
+- name: Enable to install nginx
+  ansible.builtin.command: "amazon-linux-extras enable nginx1"
+  when: nginx1_enabled_result.rc == 1
+
+# === 演習ではこれ以降の設定を行います ===
+
+- name: Install nginx
+  # TODO: yumモジュールで、nginxをインストールする
+  #         * キャッシュをアップデートするようにする
+
+- name: Set nginx.conf
+  # TODO: templateモジュールで、`templates/nginx.conf` を `/etc/nginx/nginx.conf` に配置する
+  #         * 変更があったら、nginxがリスタートされるようにする（Hint: notifyを利用する）
+  #         * ファイルのパーミッションを0644にする
+
+- name: Enable nginx service
+  # TODO: serviceモジュールで、nginxサービスを有効化する
+
+- name: Start nginx
+  # TODO: serviceモジュールで、nginxサービスをstartedにする

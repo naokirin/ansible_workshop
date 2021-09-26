@@ -53,7 +53,7 @@ https://docs.ansible.com/ansible/latest/collections/ansible/builtin/index.html
 ここまでで、PlaybookのTODOの部分を書く準備が整いました。  
 `server.yml` の `TODO` の部分に記載された条件を満たすように記載してください。
 
-## 01-5 Playbookを実行してみる
+## 02-5 Playbookを実行してみる
 
 それでは、実際にPlaybookを実行してみましょう。
 
@@ -62,8 +62,11 @@ https://docs.ansible.com/ansible/latest/collections/ansible/builtin/index.html
 Playbookは以下のようにして実行しましょう。
 
 ```sh
-# practice01_use_module のディレクトリに移動します
+# practice02_create_and_edit_files のディレクトリに移動します
 cd ./practice02_create_and_edit_files
+
+# コンテナをビルドしておく
+docker-compose build
 
 # Ansibleを実行するコンテナと、管理対象にするコンテナを実行します
 docker-compose up -d

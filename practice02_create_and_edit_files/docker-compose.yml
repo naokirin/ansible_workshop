@@ -16,3 +16,4 @@ services:
     ports:
       - 22
     tty: true
+    privileged: true

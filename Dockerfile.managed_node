@@ -24,8 +24,9 @@ RUN yum -y update && \
     cat /home/ec2-user/.ssh/ansible_workshop.pub >> /home/ec2-user/.ssh/authorized_keys && \
     echo "export LANG=en_US.UTF-8" >> /home/ec2-user/.bash_profile
 
-RUN ssh-keygen -A
+RUN ssh-keygen -A && \
+    /usr/sbin/sshd
 
 EXPOSE 22
 
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/sbin/init"]

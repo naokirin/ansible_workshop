@@ -85,6 +85,9 @@ Playbookは以下のようにして実行しましょう。
 # practice01_use_module のディレクトリに移動します
 cd ./practice01_user_module
 
+# コンテナをビルドしておく
+docker-compose build
+
 # Ansibleを実行するコンテナと、管理対象にするコンテナを実行します
 docker-compose up -d
 
