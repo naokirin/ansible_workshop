@@ -1,0 +1,14 @@
+---
+- hosts: web
+  become: yes
+  tasks:
+  - name: Check to exist file
+    shell: "ls /tmp | grep test_file"
+    register:  # TODO: 変数を指定しよう
+    changed_when: no
+    ignore_errors: yes
+
+  - name: Create file if not exist
+    command: "touch /tmp/test_file"
+    when:  # TODO: すでにファイルがあったら何もしないようにしよう
+  

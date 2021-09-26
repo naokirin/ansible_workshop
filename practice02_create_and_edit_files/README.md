@@ -110,7 +110,7 @@ cat /home/test_user/.bashrc
 docker-compose down
 ```
 
-## 補足: InSpecで正しくユーザーが作られているかチェックする
+## 補足: InSpecで正しくファイルが作成、編集されているかチェックする
 
 演習では事前に用意されたInSpecを用いて、正しく構築ができているかテストすることができます。  
 すでにAnsibleを実行するコンテナにはInSpecがインストールされています。
@@ -118,7 +118,7 @@ docker-compose down
 InSpecの実行ファイルは現在、Chef Lisenceで提供されているため、実行の前に一度目を通しておいてください。  
 [Chef EULA](https://www.chef.io/end-user-license-agreement)
 
-上記を確認の上で、正しくユーザー作成できているか検証したい方は、以下を実行してみてください。
+上記を確認の上で、正しくファイルを作成、編集できているか検証したい方は、以下を実行してみてください。
 
 ```sh
 docker-compose exec control_node bash
