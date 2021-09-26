@@ -1,0 +1,7 @@
+---
+- hosts: web
+  become: yes
+  tasks:
+  - name: Create test_user
+    user:
+      name: test_user

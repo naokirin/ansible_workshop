@@ -83,7 +83,7 @@ Playbookは以下のようにして実行しましょう。
 
 ```sh
 # practice01_use_module のディレクトリに移動します
-cd ./practice01_user_module
+cd ./practice01_use_module
 
 # コンテナをビルドしておく
 docker-compose build
