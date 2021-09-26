@@ -1,0 +1,18 @@
+version: '3'
+services:
+  control_node:
+    build:
+      context: ..
+      dockerfile: Dockerfile.control_node
+    container_name: ansible_control_node
+    volumes:
+      - .:/work
+    tty: true
+  managed_node:
+    build:
+      context: ..
+      dockerfile: Dockerfile.managed_node
+    container_name: ansible_managed_node
+    ports:
+      - 22
+    tty: true
