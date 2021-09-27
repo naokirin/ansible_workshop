@@ -100,6 +100,21 @@ ansible-playbook server.yml -i hosts
 
 うまく実行できたでしょうか？  
 失敗した場合はエラーの内容を確認して、Playbookを修正してみましょう。  
+
+もし、失敗の理由がわからない場合は、場合に応じて以下のオプションを利用してみましょう。
+
+```sh
+# -v: verboseモード。実行時のより詳細なメッセージが表示されます。 vを増やすとより詳細な表示になる
+ansible-playbook server.yml -i hosts -v
+ansible-playbook server.yml -i hosts -vvv
+
+# --check: チェックモード。一般的にはドライランと呼ばれるモード。実際に変更せずに実行してみます
+ansible-playbook server.yml -i hosts --check
+
+# --syntax-check: シンタックスチェック。Playbookの構文が正しいかチェックしてくれます
+ansible-playbook --syntax-check server.yml -i hosts
+```
+
 成功した場合は一度Ansible実行用のコンテナから抜けて、管理対象のコンテナに入ってみましょう。
 
 ```sh
