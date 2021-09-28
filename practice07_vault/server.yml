@@ -1,0 +1,26 @@
+---
+- hosts: web
+  become: yes
+  tasks:
+  - name: Create credential file
+    ansible.builtin.template:
+      src: ./templates/credential
+      dest: /tmp/credential
+      mode: '0644'
+
+  - name: Create 'name_and_password' file
+    ansible.builtin.file:
+      path: /tmp/name_and_password
+      mode: '0644'
+
+  - name: Write name into 'name_and_password' file
+    ansible.builtin.lineinfile:
+      path: /tmp/name_and_password
+      regexp: '^name='
+      line: name={{ name }}
+
+  - name: Write password into 'name_and_password' file
+    ansible.builtin.lineinfile:
+      path: /tmp/name_and_password
+      regexp: '^password='
+      line: password={{ password }}

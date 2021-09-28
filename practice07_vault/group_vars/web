@@ -1,0 +1,3 @@
+---
+name: foo
+password: # TODO: 暗号化した値を記載する

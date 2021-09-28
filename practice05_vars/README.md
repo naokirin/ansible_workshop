@@ -145,3 +145,4 @@ Test Summary: 2 successful, 0 failures, 0 skipped
   * 何回実行しても期待している状態になっているか確認してみましょう
 * 変数名を変えてみましょう
 * 変数をgroup_varsでなく、Playbookで指定してみましょう
+  * Playbookでは、直接指定する方法以外にも、別のYAMLファイルに記載された変数を読み込むこともできます
