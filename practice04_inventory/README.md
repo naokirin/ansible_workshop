@@ -71,12 +71,22 @@ docker-compose up -d
 # Ansibleを実行するコンテナに入ります
 docker-compose exec control_node bash
 
-# AnsibleでPlaybookを実行します
+# AnsibleでPlaybookを実行します（Volumeが設定されているので、コンテナ内でも編集した設定ファイルが利用可能です）
 ansible-playbook server.yml -i hosts
 ```
 
 うまく実行できたでしょうか？  
 失敗した場合はエラーの内容を確認して修正してみましょう。  
+また一度環境をリセットしたい場合は、コンテナを作成し直してみましょう。
+
+```sh
+# コンテナを再作成する
+docker-compose up --force-recreate -d
+
+# Ansibleを実行するコンテナに入りなおす
+docker-compose exec control_node bash
+```
+
 成功した場合は一度Ansible実行用のコンテナから抜けて、管理対象のコンテナに入ってみましょう。
 
 ```sh
@@ -98,7 +108,7 @@ cat /etc/passwd | grep test_user
 最後にdockerコンテナを終了しておきましょう（以降の内容を実行する場合は、それらを実行後に行ってください）。
 
 ```
-docker-compose down
+docker-compose down --rmi local
 ```
 
 ## 補足: InSpecで正しくユーザーが作られているかチェックする

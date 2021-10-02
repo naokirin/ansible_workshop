@@ -25,9 +25,9 @@ Playbookは、対象のサーバーに対して設定する内容を記述して
 
 ファイルの中身を簡単に説明します。
 
-`hosts: web` はこの処理をどのホストに対して実行するかを示しています。  
-`become: yes` はsudoで実行することを指定するものです。
-`tasks` 以下には、各処理手順を記載していきます（Roleを使う場合には記述が異なりますが、以降の演習で説明します）。
+`hosts: web` はこの処理をどのホスト（今回はそのグループ名）に対して実行するかを示しています。この部分はPractice04で詳細を確認します。  
+`become: yes` はsudoで実行することを指定するものです。実際には各操作ごとに必要に応じて設定することが推奨されますが、今回はわかりやすさのためにPlaybook全体でsudoで実行するように指定しています。  
+`tasks` 以下には、各処理手順を記載していきます（Roleを使う場合については、Practice03で説明します）。
 
 現在、 `tasks` 以下には1つ、 `name: Create test_user` があります。  
 これはまだ実際の処理自体は記載されていません。  
@@ -94,12 +94,21 @@ docker-compose up -d
 # Ansibleを実行するコンテナに入ります
 docker-compose exec control_node bash
 
-# AnsibleでPlaybookを実行します
+# AnsibleでPlaybookを実行します（Volumeが設定されているので、コンテナ内でも編集した設定ファイルが利用可能です）
 ansible-playbook server.yml -i hosts
 ```
 
 うまく実行できたでしょうか？  
 失敗した場合はエラーの内容を確認して、Playbookを修正してみましょう。  
+また一度環境をリセットしたい場合は、コンテナを作成し直してみましょう。
+
+```sh
+# コンテナを再作成する
+docker-compose up --force-recreate -d
+
+# Ansibleを実行するコンテナに入りなおす
+docker-compose exec control_node bash
+```
 
 もし、失敗の理由がわからない場合は、場合に応じて以下のオプションを利用してみましょう。
 
@@ -136,7 +145,7 @@ cat /etc/passwd | grep test_user
 最後にdockerコンテナを終了しておきましょう（以降の内容を実行する場合は、それらを実行後に行ってください）。
 
 ```
-docker-compose down
+docker-compose down --rmi local
 ```
 
 ## 補足: InSpecで正しくユーザーが作られているかチェックする

@@ -4,6 +4,7 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile.control_node
+    image: ansible_workshop_control_node
     container_name: ansible_control_node
     volumes:
       - .:/work
@@ -12,6 +13,7 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile.managed_node
+    image: ansible_workshop_managed_node
     container_name: ansible_managed_node
     ports:
       - 22
