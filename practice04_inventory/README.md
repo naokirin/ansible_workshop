@@ -47,8 +47,8 @@ ansible_ssh_private_key_file = '/.ssh/ansible_workshop'
 
 TODOの部分をこれまでの演習の `hosts` を参考にして、以下のホストを追加してみてください。
 
-* `managed_host`
-* `managed_host2`
+* `managed_node`
+* `managed_node2`
 
 ## 04-3 Playbookを実行してみる
 
