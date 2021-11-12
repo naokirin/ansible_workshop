@@ -25,7 +25,7 @@
   - name: Add line `export HOST_ENV_NAME=dev` in bashrc for test_user
     # TODO: lineinfileモジュールでファイルを変更する
     #         /home/test_user/.bashrc に `export HOST_ENV_NAME=dev` を追加する
-    #         すでにHOST_ENV_NAMEがexportされている場合は `export export HOST_ENV_NAME=dev` になるようにする
+    #         すでにHOST_ENV_NAMEがexportされている場合は `export HOST_ENV_NAME=dev` になるようにする
 ```
 
 以降では、それぞれのTODOを解決していきましょう。
